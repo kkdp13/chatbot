@@ -11,7 +11,7 @@ app = Flask(__name__)
  
 @app.route('/')
 def index():
-    return 200
+    return 'this is what you see'
 @app.route('/bot', methods=['POST'])
 
 def bot():
