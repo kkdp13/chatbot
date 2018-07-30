@@ -66,7 +66,6 @@ def bot():
     replyQueue(text)
     replyQueue.append('test2')
     replyQueue(userID)
-    replyQueue.append('hello world')
     reply(replyToken, replyQueue[:5])
     
     return 'OK', 200
