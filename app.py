@@ -81,7 +81,7 @@ def bot():
 #        replyQueue.append(discount)
 #       replyQueue.append(price)
 #       replyQueue.append(round(price))
-       replyQueue.append(newprice)
+        replyQueue.append(newprice)
         reply(replyToken, replyQueue[:5])        
         return 'OK', 200
     else:
