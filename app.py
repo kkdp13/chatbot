@@ -12,6 +12,12 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return 'this is what you see'
+
+@app.route("/webhook", methods=['GET', 'POST'])
+def webhook():
+if request.method == 'POST':
+return 'OK'
+
 @app.route('/bot', methods=['POST'])
 
 def bot():
