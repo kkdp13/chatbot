@@ -2,6 +2,7 @@ from flask import Flask, request
 import json
 import requests
 from diamondprice import diamondprice
+from placevalue import placevalue
 
 # ตรง YOURSECRETKEY ต้องนำมาใส่เองครับจะกล่าวถึงในขั้นตอนต่อๆ ไป
 global LINE_API_KEY
@@ -72,7 +73,7 @@ def bot():
         clarity = text.split(',')[3]
         discount = text.split(',')[4]
         price = diamondprice(diamondshape,carat,color,clarity,discount)
-        
+        newprice = placevalue(price)
 #        replyQueue.append(diamondshape)
 #        replyQueue.append(carat)
 #        replyQueue.append(color)
@@ -80,6 +81,7 @@ def bot():
 #        replyQueue.append(discount)
         replyQueue.append(price)
         replyQueue.append(round(price))
+        replyQueue.append(newprice)
         reply(replyToken, replyQueue[:5])        
         return 'OK', 200
     else:
