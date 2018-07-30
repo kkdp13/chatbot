@@ -85,8 +85,8 @@ def bot():
         reply(replyToken, replyQueue[:5])        
         return 'OK', 200
     else:
-        replyQueue.append('please start with / for asking bot')
-        reply(replyToken, replyQueue[:5]) 
+#        replyQueue.append('please start with / for asking bot')
+#        reply(replyToken, replyQueue[:5]) 
         return 'OK', 200
  
 def reply(replyToken, textList):
