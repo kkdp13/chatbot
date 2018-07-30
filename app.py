@@ -1,6 +1,7 @@
 from flask import Flask, request
 import json
 import requests
+from diamondprice import diamondprice
 
 # ตรง YOURSECRETKEY ต้องนำมาใส่เองครับจะกล่าวถึงในขั้นตอนต่อๆ ไป
 global LINE_API_KEY
@@ -20,7 +21,7 @@ def bot():
    
     # ข้อความที่ได้รับมา
     msg_in_json = request.get_json()
-    msg_in_string = json.dumps(msg_in_json)
+    #msg_in_string = json.dumps(msg_in_json)
     
     
     
@@ -28,7 +29,7 @@ def bot():
     replyToken = msg_in_json["events"][0]['replyToken']
     
     # ส่วนนี้ดึงข้อมูลพื้นฐานออกมาจาก json (เผื่อ)
-    userID =  msg_in_json["events"][0]['source']['userId']
+    #userID =  msg_in_json["events"][0]['source']['userId']
     msgType =  msg_in_json["events"][0]['message']['type']
     
     # ตรวจสอบว่า ที่ส่งเข้ามาเป็น text รึป่าว (อาจเป็น รูป, location อะไรแบบนี้ได้ครับ)
@@ -63,15 +64,25 @@ def bot():
     
     # ทดลอง Echo ข้อความกลับไปในรูปแบบที่ส่งไปมา (แบบ json)
     if textstart == '/':  
-        replyQueue.append('test1')
-        replyQueue.append(msg_in_string)
-        replyQueue.append(text)
-        replyQueue.append(textstart)
-        replyQueue.append('test2')
+        text = '/r,2.34,d,vvs1,30'
+        diamondshape = text.split(',')[0]
+        diamondshape = diamondshape[1]
+        carat = text.split(',')[1]
+        color = text.split(',')[2]
+        clarity = text.split(',')[3]
+        discount = text.split(',')[4]
+        price = diamondprice(diamondshape,carat,color,clarity,discount)
+        
+        #replyQueue.append('test1')
+        #replyQueue.append(msg_in_string)
+        replyQueue.append(price)
+        #replyQueue.append(textstart)
+        #replyQueue.append('test2')
         reply(replyToken, replyQueue[:5])        
         return 'OK', 200
     else:
         replyQueue.append('please start with / for asking bot')
+        reply(replyToken, replyQueue[:5]) 
         return 'OK', 200
  
 def reply(replyToken, textList):
