@@ -5,13 +5,13 @@ import requests
 # ตรง YOURSECRETKEY ต้องนำมาใส่เองครับจะกล่าวถึงในขั้นตอนต่อๆ ไป
 global LINE_API_KEY
 # ห้ามลบคำว่า Bearer ออกนะครับเมื่อนำ access token มาใส่
-LINE_API_KEY = 'Bearer YOURSECRETKEY'
+LINE_API_KEY = 'Bearer lkzh0jXv/E/35u+xA02IyrMt7+M0xUMBTvuwa9rHWMP8LAgeGuRXYdyuSWHO/yDJPjRm0yB409b142EY0nEukr1+Rdy2HoXRX2TWYn7jYL52X9GKL3/wHrKdtGjndL9u7UsUDkid8/T7IsjD6VV7LgdB04t89/1O/w1cDnyilFU='
 
 app = Flask(__name__)
  
 @app.route('/')
 def index():
-    return 'This is chatbot server.'
+    return 200
 @app.route('/bot', methods=['POST'])
 
 def bot():
