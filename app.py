@@ -58,10 +58,14 @@ def bot():
     # replyQueue.append(reponse_dict[closest])
    
     # ตอบข้อความ "นี่คือรูปแบบข้อความที่รับส่ง" กลับไป
-    replyQueue.append('นี่คือรูปแบบข้อความที่รับส่ง')
+    #replyQueue.append('นี่คือรูปแบบข้อความที่รับส่ง')
     
     # ทดลอง Echo ข้อความกลับไปในรูปแบบที่ส่งไปมา (แบบ json)
+    replyQueue.append('test1')
     replyQueue.append(msg_in_string)
+    replyQueue(text)
+    replyQueue.append('test2')
+    replyQueue(userID)
     replyQueue.append('hello world')
     reply(replyToken, replyQueue[:5])
     
