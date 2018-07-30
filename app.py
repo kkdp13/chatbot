@@ -63,9 +63,9 @@ def bot():
     # ทดลอง Echo ข้อความกลับไปในรูปแบบที่ส่งไปมา (แบบ json)
     replyQueue.append('test1')
     replyQueue.append(msg_in_string)
-    replyQueue(text)
+    replyQueue.append(text)
     replyQueue.append('test2')
-    replyQueue(userID)
+    replyQueue.append(userID)
     reply(replyToken, replyQueue[:5])
     
     return 'OK', 200
