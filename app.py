@@ -71,13 +71,13 @@ def bot():
         color = text.split(',')[2]
         clarity = text.split(',')[3]
         discount = text.split(',')[4]
-        price = diamondprice(diamondshape,carat,color,clarity,discount)
+        #price = diamondprice(diamondshape,carat,color,clarity,discount)
         
-        #replyQueue.append('test1')
-        #replyQueue.append(msg_in_string)
-        replyQueue.append(price)
-        #replyQueue.append(textstart)
-        #replyQueue.append('test2')
+        replyQueue.append(diamondshape)
+        replyQueue.append(carat)
+        replyQueue.append(color)
+        replyQueue.append(clarity)
+        replyQueue.append(discount)
         reply(replyToken, replyQueue[:5])        
         return 'OK', 200
     else:
