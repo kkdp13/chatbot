@@ -22,6 +22,8 @@ def bot():
     msg_in_json = request.get_json()
     msg_in_string = json.dumps(msg_in_json)
     
+    
+    
     # Token สำหรับตอบกลับ (จำเป็นต้องใช้ในการตอบกลับ)
     replyToken = msg_in_json["events"][0]['replyToken']
     
@@ -60,6 +62,7 @@ def bot():
     
     # ทดลอง Echo ข้อความกลับไปในรูปแบบที่ส่งไปมา (แบบ json)
     replyQueue.append(msg_in_string)
+    replyQueue.append('hello world')
     reply(replyToken, replyQueue[:5])
     
     return 'OK', 200
