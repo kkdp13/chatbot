@@ -41,7 +41,7 @@ def bot():
     # ตรงนี้ต้องแน่ใจว่า msgType เป็นประเภท text ถึงเรียกได้ครับ 
     # lower เพื่อให้เป็นตัวพิมพ์เล็ก strip เพื่อนำช่องว่างหัวท้ายออก ครับ
     text = msg_in_json["events"][0]['message']['text'].lower().strip()
-    #textstart = text[0]
+    textstart = text[0]
     
     # ตัวอย่างการทำให้ bot ถาม-ตอบได้ แบบ exact match
     # response_dict = {'สวัสดี':'สวัสดีครับ'}
@@ -66,7 +66,7 @@ def bot():
     replyQueue.append(msg_in_string)
     replyQueue.append(text)
     replyQueue.append(textstart)
-    replyQueue.append('test2)
+    replyQueue.append('test2')
     reply(replyToken, replyQueue[:5])
     
     return 'OK', 200
