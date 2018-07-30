@@ -64,20 +64,22 @@ def bot():
     
     # ทดลอง Echo ข้อความกลับไปในรูปแบบที่ส่งไปมา (แบบ json)
     if textstart == '/':  
-        text = '/r,2.34,d,vvs1,30'
+        #text = '/r,2.34,d,vvs1,30'
         diamondshape = text.split(',')[0]
         diamondshape = diamondshape[1]
         carat = text.split(',')[1]
         color = text.split(',')[2]
         clarity = text.split(',')[3]
         discount = text.split(',')[4]
-        #price = diamondprice(diamondshape,carat,color,clarity,discount)
+        price = diamondprice(diamondshape,carat,color,clarity,discount)
         
-        replyQueue.append(diamondshape)
-        replyQueue.append(carat)
-        replyQueue.append(color)
-        replyQueue.append(clarity)
-        replyQueue.append(discount)
+#        replyQueue.append(diamondshape)
+#        replyQueue.append(carat)
+#        replyQueue.append(color)
+#        replyQueue.append(clarity)
+#        replyQueue.append(discount)
+        replyQueue.append(price)
+        replyQueue.append(round(price))
         reply(replyToken, replyQueue[:5])        
         return 'OK', 200
     else:
