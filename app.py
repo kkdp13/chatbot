@@ -62,14 +62,17 @@ def bot():
     #replyQueue.append('นี่คือรูปแบบข้อความที่รับส่ง')
     
     # ทดลอง Echo ข้อความกลับไปในรูปแบบที่ส่งไปมา (แบบ json)
-    replyQueue.append('test1')
-    replyQueue.append(msg_in_string)
-    replyQueue.append(text)
-    replyQueue.append(textstart)
-    replyQueue.append('test2')
-    reply(replyToken, replyQueue[:5])
-    
-    return 'OK', 200
+    if textstart == '/':  
+        replyQueue.append('test1')
+        replyQueue.append(msg_in_string)
+        replyQueue.append(text)
+        replyQueue.append(textstart)
+        replyQueue.append('test2')
+        reply(replyToken, replyQueue[:5])        
+        return 'OK', 200
+    else:
+        replyQueue.append('please start with / for asking bot')
+        return 'OK', 200
  
 def reply(replyToken, textList):
     # Method สำหรับตอบกลับข้อความประเภท text กลับครับ เขียนแบบนี้เลยก็ได้ครับ
