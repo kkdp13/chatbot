@@ -36,9 +36,9 @@ def bot():
     # ตรวจสอบว่า ที่ส่งเข้ามาเป็น text รึป่าว (อาจเป็น รูป, location อะไรแบบนี้ได้ครับ)
     # แต่ก็สามารถประมวลผลข้อมูลประเภทอื่นได้นะครับ
     # เช่น ถ้าส่งมาเป็น location ทำการดึง lat long ออกมาทำบางอย่าง เป็นต้น
-    if msgType != 'text':
-        reply(replyToken, ['Only text is allowed.'])
-        return 'OK',200
+#    if msgType != 'text':
+#        reply(replyToken, ['Only text is allowed.'])
+#        return 'OK',200
     
     # ตรงนี้ต้องแน่ใจว่า msgType เป็นประเภท text ถึงเรียกได้ครับ 
     # lower เพื่อให้เป็นตัวพิมพ์เล็ก strip เพื่อนำช่องว่างหัวท้ายออก ครับ
@@ -72,11 +72,18 @@ def bot():
         color = text.split(',')[2]
         clarity = text.split(',')[3]
         discount = text.split(',')[4]
-        price = diamondprice(diamondshape,carat,color,clarity,discount)
-        newprice = placevalue(price)
-#        replyQueue.append(diamondshape)
-#        replyQueue.append(carat)
-#        replyQueue.append(color)
+        port = text.split(',')[5]
+        port = float(port)
+        if port != '':
+            caratport = port
+        price = diamondprice(diamondshape,carat,color,clarity,discount,caratport)
+        newprice = placevalue(price[0])
+        caratport = price[1]
+        rapaportprice = price[2]
+        rate = price[3]
+        replyQueue.append(caratport)
+        replyQueue.append(rapaportprice)
+        replyQueue.append(rate)
 #        replyQueue.append(clarity)
 #        replyQueue.append(discount)
 #       replyQueue.append(price)
