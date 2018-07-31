@@ -1,8 +1,7 @@
 from caratsize import caratsize
 from colornumber import colornumber
 from rportconnect import connectdb, cutstring
-
-
+from placevalue import placevalue
 
 
 #c = conn.cursor() # mark the cursor in database
@@ -40,11 +39,12 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
     newprice = cutstring(price)
     newprice = float(newprice)
     carat = float(carat)
-    newdiscount = 1 - (newdiscount / 100)
+    newdiscount = 1 + (newdiscount / 100)
     currency = 33.3
     calprice = 0.0
     calprice = newprice * carat * currency * newdiscount
-#    print("rapaport = {}".format(newprice))
+    rapaportprice = placevalue(newprice)
+#    print("rapaport = {}".format(rapaportprice))
 #    print("calcurate price = {}".format(round(calprice, 3)))
 #    print("carat weight = {}".format(carat))
 #    print("currency rate = {}".format(currency))
@@ -53,5 +53,5 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
 #    seealldata(rows)
     #x = input("do you want more (1) or no more (0): ")
     conn.close()
-    return calprice
+    return calprice, rapaportprice, currency, discount
     
