@@ -31,14 +31,14 @@ def bot():
     
     # ส่วนนี้ดึงข้อมูลพื้นฐานออกมาจาก json (เผื่อ)
     #userID =  msg_in_json["events"][0]['source']['userId']
-    msgType =  msg_in_json["events"][0]['message']['type']
+#    msgType =  msg_in_json["events"][0]['message']['type']
     
     # ตรวจสอบว่า ที่ส่งเข้ามาเป็น text รึป่าว (อาจเป็น รูป, location อะไรแบบนี้ได้ครับ)
     # แต่ก็สามารถประมวลผลข้อมูลประเภทอื่นได้นะครับ
     # เช่น ถ้าส่งมาเป็น location ทำการดึง lat long ออกมาทำบางอย่าง เป็นต้น
-    if msgType != 'text':
-        reply(replyToken, ['Only text is allowed.'])
-        return 'OK',200
+#    if msgType != 'text':
+#        reply(replyToken, ['Only text is allowed.'])
+#        return 'OK',200
     
     # ตรงนี้ต้องแน่ใจว่า msgType เป็นประเภท text ถึงเรียกได้ครับ 
     # lower เพื่อให้เป็นตัวพิมพ์เล็ก strip เพื่อนำช่องว่างหัวท้ายออก ครับ
