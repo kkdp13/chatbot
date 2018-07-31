@@ -40,7 +40,7 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
     newprice = cutstring(price)
     newprice = float(newprice)
     carat = float(carat)
-    newdiscount = 1 - (newdiscount / 100)
+    newdiscount = 1 + (newdiscount / 100)
     currency = 33.3
     calprice = 0.0
     calprice = newprice * carat * currency * newdiscount
@@ -53,5 +53,5 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
 #    seealldata(rows)
     #x = input("do you want more (1) or no more (0): ")
     conn.close()
-    return calprice
+    return calprice,caratport,newprice,currency
     
