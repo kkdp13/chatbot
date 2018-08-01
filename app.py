@@ -74,15 +74,18 @@ def bot():
         discount = text.split(',')[4]
         price = diamondprice(diamondshape,carat,color,clarity,discount)
         newprice = placevalue(price['calprice'])
+        newpriceusd = placevalue(price['calpriceusd'])
 #        calprice,caratport,newprice,rate
 #        replyQueue.append(diamondshape)
 #        replyQueue.append(carat)
 #        replyQueue.append(color)
 #        replyQueue.append(clarity)
+        newpriceusdtext = 'total price is {} USD'.format(newpriceusd)
         newpricetext = 'total price is {} THB'.format(newprice)
         rapaportpricetext = 'the rapaport is {}'.format(price['rapaportprice'])
         currencytext = 'the rate is {}'.format(price['currency'])
         discounttext = 'the discount is {}%'.format(price['discount'])
+        replyQueue.append(newpriceusdtext)
         replyQueue.append(newpricetext)
         replyQueue.append(rapaportpricetext)
         replyQueue.append(currencytext)

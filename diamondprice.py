@@ -42,7 +42,9 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
     newdiscount = 1 + (newdiscount / 100)
     currency = 33.3
     calprice = 0.0
-    calprice = newprice * carat * currency * newdiscount
+    calpriceusd = 0.0
+    calpriceusd = newprice * carat * newdiscount
+    calprice = calpriceusd * currency
     rapaportprice = placevalue(newprice)
 #    print("rapaport = {}".format(rapaportprice))
 #    print("calcurate price = {}".format(round(calprice, 3)))
@@ -58,5 +60,6 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
     returndic['rapaportprice'] = rapaportprice
     returndic['currency'] = currency
     returndic['discount'] = discount
+    returndic['calpriceusd'] = calpriceusd
     return returndic
     
