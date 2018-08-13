@@ -24,6 +24,7 @@
 
 #import re
 import requests
+from getnewcurrency import getnewcurrency
 #from bs4 import BeautifulSoup
 
 def getcurrency():
@@ -44,15 +45,14 @@ def getcurrency():
 #print(r.text.find(strfind4))
 #print(len(r.text))
 #print(r2[275:292])
-    currency = r2[286:290]
+    currency = r2[284:292]
 #    print(currency)
-    currency2 = float(currency)
+#    currency2 = float(currency)
 #    print(currency2)
 #    print(type(currency2))
-    return currency2
+    currency = getnewcurrency(currency)
+    return currency
 
-#currency = getcurrency()
-#print(currency)
 #currency = getcurrency()
 #print('the rate from superrich is : {}'.format(currency))
 #i = int(r.text.find(strfind1))
