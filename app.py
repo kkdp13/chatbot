@@ -25,8 +25,8 @@ def bot():
     msg_in_json = request.get_json()
     #msg_in_string = json.dumps(msg_in_json)
 #    writeindb(msg_in_json)    
-    with open('datacollection.json', 'w') as writefile:
-        json.dump(msg_in_json, writefile)
+#    with open('datacollection.json', 'w') as writefile:
+#        json.dump(msg_in_json, writefile)
     
     # Token สำหรับตอบกลับ (จำเป็นต้องใช้ในการตอบกลับ)
     replyToken = msg_in_json["events"][0]['replyToken']
