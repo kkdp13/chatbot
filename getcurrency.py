@@ -44,15 +44,15 @@ def getcurrency():
 #print(r.text.find(strfind4))
 #print(len(r.text))
 #print(r2[275:292])
-    currency = r2[285:290]
+    currency = r2[286:290]
 #    print(currency)
     currency2 = float(currency)
 #    print(currency2)
 #    print(type(currency2))
     return currency2
 
-currency = getcurrency()
-print(currency)
+#currency = getcurrency()
+#print(currency)
 #currency = getcurrency()
 #print('the rate from superrich is : {}'.format(currency))
 #i = int(r.text.find(strfind1))
