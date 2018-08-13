@@ -83,7 +83,7 @@ def bot():
         newpriceusdtext = 'total price is {} USD'.format(newpriceusd)
         newpricetext = 'total price is {} THB'.format(newprice)
         rapaportpricetext = 'the rapaport is {}'.format(price['rapaportprice'])
-        currencytext = 'the rate is {}'.format(price['currency'])
+        currencytext = 'the superrich rate is {}'.format(price['currency'])
         discounttext = 'the discount is {}%'.format(price['discount'])
         replyQueue.append(newpriceusdtext)
         replyQueue.append(newpricetext)
