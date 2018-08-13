@@ -3,6 +3,7 @@ import json
 import requests
 from diamondprice import diamondprice
 from placevalue import placevalue
+#from writeindb import writeindb
 
 # ตรง YOURSECRETKEY ต้องนำมาใส่เองครับจะกล่าวถึงในขั้นตอนต่อๆ ไป
 global LINE_API_KEY
@@ -23,8 +24,9 @@ def bot():
     # ข้อความที่ได้รับมา
     msg_in_json = request.get_json()
     #msg_in_string = json.dumps(msg_in_json)
-    
-    
+#    writeindb(msg_in_json)    
+    with open('datacollection.json', 'w') as writefile:
+        json.dump(msg_in_json, writefile)
     
     # Token สำหรับตอบกลับ (จำเป็นต้องใช้ในการตอบกลับ)
     replyToken = msg_in_json["events"][0]['replyToken']
