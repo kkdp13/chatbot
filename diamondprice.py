@@ -41,7 +41,7 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
     carat = float(carat)
     newdiscount = 1 + (newdiscount / 100)
     currency = 0.0
-    currency = getcurrency()
+    currency = float(getcurrency())
     calprice = 0.0
     calpriceusd = 0.0
     calpriceusd = newprice * carat * newdiscount
@@ -55,6 +55,7 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
 #    print("---------"*10)
 #    seealldata(rows)
     #x = input("do you want more (1) or no more (0): ")
+    print(currency)
     conn.close()
     returndic = dict()
     returndic['calprice'] = calprice
@@ -64,3 +65,5 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
     returndic['calpriceusd'] = calpriceusd
     return returndic
     
+#diamonprice = diamondprice('r',1.05,'h','vs1',-25)
+#print(diamondprice)
