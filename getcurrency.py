@@ -54,6 +54,8 @@ def getcurrency():
     return currency
 
 #currency = getcurrency()
+#print(currency)
+#currency = getcurrency()
 #print('the rate from superrich is : {}'.format(currency))
 #i = int(r.text.find(strfind1))
 #for i in len(r.text):
