@@ -40,6 +40,7 @@ def diamondprice(diamondshape,carat,color,clarity,discount):
     newprice = float(newprice)
     carat = float(carat)
     newdiscount = 1 + (newdiscount / 100)
+    currency = 0.0
     currency = getcurrency()
     calprice = 0.0
     calpriceusd = 0.0
