@@ -1,6 +1,6 @@
 from caratsize import caratsize
 from colornumber import colornumber
-import connectdb, cutstring
+from rportconnect import connectdb, cutstring
 from placevalue import placevalue
 from getcurrency import getcurrency
 
