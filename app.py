@@ -3,6 +3,7 @@ import json
 import requests
 from diamondprice import diamondprice
 from placevalue import placevalue
+from getcurrency import getcurrency
 #from writeindb import writeindb
 
 # ตรง YOURSECRETKEY ต้องนำมาใส่เองครับจะกล่าวถึงในขั้นตอนต่อๆ ไป
@@ -105,6 +106,13 @@ def bot():
 #        print(totalprice)
         totalpricetext = 'total price is {}'.format(totalprice)
         replyQueue.append(totalpricetext)
+        reply(replyToken, replyQueue[:5])
+        return 'OK', 200
+    elif textstart == '.':
+        currency = 0.0
+        currency = float(getcurrency())
+        currencytext = 'the superrich rate is {}'.format(currency)
+        replyQueue.append(currencytext)
         reply(replyToken, replyQueue[:5])
         return 'OK', 200
     else:
