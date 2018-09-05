@@ -3,19 +3,18 @@ import json
 import requests
 from diamondprice import diamondprice
 from placevalue import placevalue
-from rportconnect import connectdb
 #from writeindb import writeindb
 
 # ตรง YOURSECRETKEY ต้องนำมาใส่เองครับจะกล่าวถึงในขั้นตอนต่อๆ ไป
 global LINE_API_KEY
 # ห้ามลบคำว่า Bearer ออกนะครับเมื่อนำ access token มาใส่
-LINE_API_KEY = 'Bearer D7ZfjxRtPswUt5MWU96sqt69tRDlUTDp4YlRmn34Td3pa1g+mZTHItrAUAgMJiOmM6y65eOZVJmK+3XqiZ7bGe4JJy/pUTfqTXdERJWqiuUNI487QyFK2sNknl7b9T2wqfl2ZKe585iCQNx8Kos0kQdB04t89/1O/w1cDnyilFU='
+LINE_API_KEY = 'Bearer lkzh0jXv/E/35u+xA02IyrMt7+M0xUMBTvuwa9rHWMP8LAgeGuRXYdyuSWHO/yDJPjRm0yB409b142EY0nEukr1+Rdy2HoXRX2TWYn7jYL52X9GKL3/wHrKdtGjndL9u7UsUDkid8/T7IsjD6VV7LgdB04t89/1O/w1cDnyilFU='
 
 app = Flask(__name__)
  
 @app.route('/')
 def index():
-    return 'This is chatbot server for test bot.'
+    return 'This is chatbot server.'
 @app.route('/bot', methods=['POST'])
 
 def bot():
@@ -33,30 +32,8 @@ def bot():
     replyToken = msg_in_json["events"][0]['replyToken']
     
     # ส่วนนี้ดึงข้อมูลพื้นฐานออกมาจาก json (เผื่อ)
-    userID = msg_in_json["events"][0]['source']['userId']
-    msgType = msg_in_json["events"][0]['message']['type']
-    if msgType == 'group':
-        groupID = msg_in_json["events"][0]['source']['groupId']
-    else:
-        groupID = '00000000'
-        
-    textMsg = msg_in_json["events"][0]['message']['text']
-    textType =msg_in_json["events"][0]['message']['type']
-    textId = msg_in_json["events"][0]['message']['id']
-    conn = connectdb('_rRapaport')
-    tablename = 'collectiondata'
-    c = conn.cursor()
-    def create_table():
-        c.execute("CREATE TABLE IF NOT EXISTS '{}'(userID TEXT, msgType TEXT, groupID TEXT, textMsg TEXT, textType TEXT, textId TEXT)".format(tablename))
-    
-    def data_entry():
-        c.execute("INSERT INTO '{}' VALUES('{}', '{}', '{}', '{}', '{}', '{}')".format(tablename, userID, msgType, groupID, textMsg, textType, textId))
-        conn.commit()
-        c.close()
-        conn.close()
-    
-#    create_table()
-    data_entry()    
+    #userID =  msg_in_json["events"][0]['source']['userId']
+#    msgType =  msg_in_json["events"][0]['message']['type']
     
     # ตรวจสอบว่า ที่ส่งเข้ามาเป็น text รึป่าว (อาจเป็น รูป, location อะไรแบบนี้ได้ครับ)
     # แต่ก็สามารถประมวลผลข้อมูลประเภทอื่นได้นะครับ
@@ -116,19 +93,6 @@ def bot():
         replyQueue.append(currencytext)
         replyQueue.append(discounttext)
         reply(replyToken, replyQueue[:5])        
-        return 'OK', 200
-    elif textstart == '=':
-        #text = '=111111111,222222222'
-        price1 = text.split(',')[0]
-        price1 = price1[1:]
-        price2 = text.split(',')[1]
-        price1 = float(price1)
-        price2 = float(price2)
-        totalprice = price1+price2
-#        print(totalprice)
-        totalpricetext = 'total price is {}'.format(totalprice)
-        replyQueue.append(totalpricetext)
-        reply(replyToken, replyQueue[:5])
         return 'OK', 200
     else:
 #        replyQueue.append('please start with / for asking bot')
