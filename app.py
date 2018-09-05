@@ -94,6 +94,19 @@ def bot():
         replyQueue.append(discounttext)
         reply(replyToken, replyQueue[:5])        
         return 'OK', 200
+    elif textstart == '=':
+        #text = '=111111111,222222222'
+        price1 = text.split(',')[0]
+        price1 = price1[1:]
+        price2 = text.split(',')[1]
+        price1 = float(price1)
+        price2 = float(price2)
+        totalprice = price1+price2
+#        print(totalprice)
+        totalpricetext = 'total price is {}'.format(totalprice)
+        replyQueue.append(totalpricetext)
+        reply(replyToken, replyQueue[:5])
+        return 'OK', 200
     else:
 #        replyQueue.append('please start with / for asking bot')
 #        reply(replyToken, replyQueue[:5]) 
