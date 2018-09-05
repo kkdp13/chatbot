@@ -104,14 +104,14 @@ def bot():
         price2 = float(price2)
         totalprice = price1+price2
 #        print(totalprice)
-        totalpricetext = 'total price is {}'.format(totalprice)
+        totalpricetext = 'sum = {}'.format(totalprice)
         replyQueue.append(totalpricetext)
         reply(replyToken, replyQueue[:5])
         return 'OK', 200
     elif textstart == '.':
         currency = 0.0
         currency = float(getcurrency())
-        currencytext = 'the superrich rate is {}'.format(currency)
+        currencytext = 'superrich rate = {}'.format(currency)
         replyQueue.append(currencytext)
         reply(replyToken, replyQueue[:5])
         return 'OK', 200
